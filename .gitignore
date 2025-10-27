@@ -1,0 +1,47 @@
+# ---- Python / Django
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+.mypy_cache/
+.pytest_cache/
+.coverage*
+htmlcov/
+.DS_Store
+
+# DB local (no subir)
+db.sqlite3
+
+# Archivos de entorno/secrets
+.env
+.env.*
+
+# Django collectstatic / media generados
+staticfiles/
+media/
+
+# ---- Node / Front
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+.build/
+.cache/
+
+# Tailwind build (si compilas local)
+# (Deja comentado si quieres subir el CSS generado)
+# static/css/output.css
+
+# ---- IDE / OS
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+Thumbs.db

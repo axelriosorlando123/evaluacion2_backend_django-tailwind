@@ -1,0 +1,81 @@
+{% load static %}
+<!doctype html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Fruteria{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { 600: '#4f46e5' } } } } }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+  </style>
+</head>
+<body class="min-h-full bg-gradient-to-b from-indigo-50 to-white text-gray-800">
+  <!-- Topbar -->
+  <header class="bg-white/80 backdrop-blur border-b border-indigo-100">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white text-lg font-bold shadow-sm">TM</span>
+        <div>
+          <p class="text-lg font-bold leading-tight">Fruteria</p>
+          <p class="text-xs text-gray-500 -mt-1">las mejores frutas del mercado</p>
+        </div>
+      </a>
+
+      <nav class="flex items-center gap-2">
+        <a href="{% url 'producto_lista' %}"
+           class="px-3 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition">
+          listado productos
+        </a>
+        <a href="{% url 'cliente_lista' %}"
+           class="px-3 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition">
+          listado clientes
+        </a>
+        <a href="{% url 'detalleventa_lista' %}"
+           class="px-3 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition">
+          listado ventas
+        </a>
+        <!--<a href="/admin/"
+           class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-100 transition">
+          Admin
+        </a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mensajes (Django messages) -->
+  <div class="max-w-6xl mx-auto px-4 mt-4 space-y-2">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="rounded-xl border p-3 text-sm
+                    {% if message.tags == 'success' %} bg-green-50 border-green-200 text-green-800
+                    {% elif message.tags == 'error' %} bg-red-50 border-red-200 text-red-800
+                    {% elif message.tags == 'warning' %} bg-yellow-50 border-yellow-200 text-yellow-800
+                    {% else %} bg-blue-50 border-blue-200 text-blue-800 {% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Contenido -->
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t bg-white/60 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-gray-500">
+      Hecho con ❤️ para clase — Django MVC + Tailwind.
+    </div>
+  </footer>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% extends "catalogo/base.html" %}
+{% block title %}Productos — Tienda MVC{% endblock %}
+
+{% block content %}
+<section class="space-y-6">
+  <!-- Encabezado + acciones -->
+  <div class="flex flex-col sm:flex-row gap-3 sm:items-end sm:justify-between">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Productos</h2>
+      <p class="text-sm text-gray-500">Listado general de productos registrados.</p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-2">
+      <a href="{% url 'producto_crear' %}"
+         class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-700 shadow-sm transition">
+        + Nuevo producto
+      </a>
+    </div>
+  </div>
+
+  {% if productos %}
+    <!-- Tabla -->
+    <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+      <table class="min-w-full divide-y divide-gray-100">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">ID</th>
+            <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">Nombre</th>
+            <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">Categoría</th>
+            <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">Precio</th>
+            <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">Creado</th>
+            <th class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-gray-600">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {% for p in productos %}
+            <tr class="hover:bg-indigo-50/40 transition">
+              <td class="px-4 py-3 text-sm text-gray-700">{{ p.id }}</td>
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="h-9 w-9 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-bold">
+                    {{ p.nombre|first|upper }}
+                  </div>
+                  <div>
+                    <p class="font-semibold text-gray-900">{{ p.nombre }}</p>
+                    <p class="text-xs text-gray-500">SKU #{{ p.id }}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3 text-sm text-gray-700">{{ p.categoria }}</td>
+              <td class="px-4 py-3">
+                <span class="inline-flex items-center rounded-lg bg-emerald-50 px-2.5 py-1 text-sm font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-200">
+                  ${{ p.precio }}
+                </span>
+              </td>
+              <td class="px-4 py-3 text-sm text-gray-700">
+                {{ p.created_at|date:"d/m/Y H:i" }}
+              </td>
+              <td class="px-4 py-3 text-center text-sm">
+                <div class="flex justify-center gap-2">
+                  <a href="{% url 'producto_editar' p.id %}"
+                     class="inline-flex items-center justify-center rounded-lg bg-blue-500 px-2 py-1 text-white text-xs font-semibold hover:bg-blue-600 transition">
+                    ✏️ Editar
+                  </a>
+                  <a href="{% url 'producto_eliminar' p.id %}"
+                     onclick="return confirm('¿Seguro que deseas eliminar este producto?');"
+                     class="inline-flex items-center justify-center rounded-lg bg-red-500 px-2 py-1 text-white text-xs font-semibold hover:bg-red-600 transition">
+                    🗑️ Eliminar
+                  </a>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="rounded-2xl border border-dashed border-gray-300 bg-white p-10 text-center shadow-sm">
+      <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600 text-2xl">🛒</div>
+      <h3 class="text-lg font-semibold">No hay productos aún</h3>
+      <p class="mt-1 text-sm text-gray-500">Crea el primero para comenzar tu catálogo.</p>
+      <a href="{% url 'producto_crear' %}"
+         class="mt-5 inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 shadow-sm transition">
+        Crear producto
+      </a>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

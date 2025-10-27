@@ -1,0 +1,49 @@
+{% extends "catalogo/base.html" %}
+{% block title %}Nueva venta — Fruteria{% endblock %}
+
+{% block content %}
+<section class="space-y-6">
+  <!-- Encabezado -->
+  <div class="flex flex-col sm:flex-row gap-3 sm:items-end sm:justify-between">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight text-indigo-700">Agregar nueva venta</h2>
+      <p class="text-sm text-gray-500">Completa los datos de la venta y guárdalo en el catálogo.</p>
+    </div>
+    <a href="{% url 'detalleventa_lista' %}"
+       class="inline-flex items-center justify-center rounded-xl bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-300 shadow-sm transition">
+      ← Volver al listado
+    </a>
+  </div>
+
+  <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm p-6">
+    <form method="POST" class="space-y-5">
+      {% csrf_token %}
+      <div class="space-y-4">
+        {% for field in form %}
+          <div>
+            <label for="{{ field.id_for_label }}" class="block text-sm font-semibold text-gray-700 mb-1">
+              {{ field.label }}
+            </label>
+            {{ field }}
+            {% if field.errors %}
+              <p class="text-sm text-red-600 mt-1">{{ field.errors|join:", " }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="flex justify-end gap-3 pt-4">
+        <a href="{% url 'producto_lista' %}"
+           class="inline-flex items-center justify-center rounded-xl bg-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-800 hover:bg-gray-300 shadow-sm transition">
+          Cancelar
+        </a>
+        <button type="submit"
+                class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 shadow-sm transition">
+          💾 Guardar venta
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+

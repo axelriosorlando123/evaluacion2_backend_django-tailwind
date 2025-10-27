@@ -1,0 +1,35 @@
+[
+  { "model": "catalogo.cliente", "pk": 1, "fields": { "nombre": "Cliente 1", "correo": "ejemplo1@correo.com", "rut": "1111111-1", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 2, "fields": { "nombre": "Cliente 2", "correo": "ejemplo2@correo.com", "rut": "2222222-2", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 3, "fields": { "nombre": "Cliente 3", "correo": "ejemplo3@correo.com", "rut": "3333333-3", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 4, "fields": { "nombre": "Cliente 4", "correo": "ejemplo4@correo.com", "rut": "4444444-4", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 5, "fields": { "nombre": "Cliente 5", "correo": "ejemplo5@correo.com", "rut": "5555555-5", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 6, "fields": { "nombre": "Cliente 6", "correo": "ejemplo6@correo.com", "rut": "6666666-6", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 7, "fields": { "nombre": "Cliente 7", "correo": "ejemplo7@correo.com", "rut": "7777777-7", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 8, "fields": { "nombre": "Cliente 8", "correo": "ejemplo8@correo.com", "rut": "8888888-8", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 9, "fields": { "nombre": "Cliente 9", "correo": "ejemplo9@correo.com", "rut": "9999999-9", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+  { "model": "catalogo.cliente", "pk": 10, "fields": { "nombre": "Cliente 10", "correo": "ejemplo10@correo.com", "rut": "10101010-0", "created_at": "2025-10-01T12:00:00Z", "modified_at": "2025-10-01T12:00:00Z" } },
+
+  { "model": "catalogo.producto", "pk": 1, "fields": { "nombre": "Manzana", "categoria": "Frutas", "precio": 800, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 2, "fields": { "nombre": "Naranja", "categoria": "Frutas", "precio": 700, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 3, "fields": { "nombre": "Plátano", "categoria": "Frutas", "precio": 900, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 4, "fields": { "nombre": "Pera", "categoria": "Frutas", "precio": 850, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 5, "fields": { "nombre": "Durazno", "categoria": "Frutas", "precio": 950, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 6, "fields": { "nombre": "Cereza", "categoria": "Frutas", "precio": 1200, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 7, "fields": { "nombre": "Frutilla", "categoria": "Frutas", "precio": 1300, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 8, "fields": { "nombre": "Sandía", "categoria": "Frutas", "precio": 2500, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 9, "fields": { "nombre": "Melón", "categoria": "Frutas", "precio": 2200, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.producto", "pk": 10, "fields": { "nombre": "Uva", "categoria": "Frutas", "precio": 1600, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+
+  { "model": "catalogo.detalleventa", "pk": 1, "fields": { "producto": 1, "cliente": 1, "cantidad": 2, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 2, "fields": { "producto": 2, "cliente": 1, "cantidad": 2, "created_at": "2025-10-10T12:00:00Z", "modified_at": "2025-10-10T12:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 3, "fields": { "producto": 3, "cliente": 2, "cantidad": 2, "created_at": "2025-10-11T13:00:00Z", "modified_at": "2025-10-11T13:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 4, "fields": { "producto": 4, "cliente": 2, "cantidad": 1, "created_at": "2025-10-11T13:00:00Z", "modified_at": "2025-10-11T13:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 5, "fields": { "producto": 5, "cliente": 3, "cantidad": 2, "created_at": "2025-10-12T14:00:00Z", "modified_at": "2025-10-12T14:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 6, "fields": { "producto": 6, "cliente": 4, "cantidad": 2, "created_at": "2025-10-13T15:00:00Z", "modified_at": "2025-10-13T15:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 7, "fields": { "producto": 7, "cliente": 5, "cantidad": 2, "created_at": "2025-10-14T16:00:00Z", "modified_at": "2025-10-14T16:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 8, "fields": { "producto": 8, "cliente": 6, "cantidad": 1, "created_at": "2025-10-15T10:00:00Z", "modified_at": "2025-10-15T10:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 9, "fields": { "producto": 9, "cliente": 7, "cantidad": 2, "created_at": "2025-10-16T11:00:00Z", "modified_at": "2025-10-16T11:00:00Z" } },
+  { "model": "catalogo.detalleventa", "pk": 10, "fields": { "producto": 10, "cliente": 8, "cantidad": 2, "created_at": "2025-10-17T12:00:00Z", "modified_at": "2025-10-17T12:00:00Z" } }
+]
+
