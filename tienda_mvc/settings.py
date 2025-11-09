@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalogo',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -23,6 +24,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'tienda_mvc.urls'
@@ -59,3 +61,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = '/usuarios/login/'
+LOGOUT_REDIRECT_URL = '/usuarios/login/'
+LOGIN_REDIRECT_URL = '/usuarios/login' 

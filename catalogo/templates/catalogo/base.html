@@ -4,53 +4,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Fruteria{% endblock %}</title>
+  <title>{% block title %}Frutería{% endblock %}</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: { colors: { brand: { 600: '#4f46e5' } } } } }
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 600: '#4f46e5', 700: '#4338ca' },
+          }
+        }
+      }
+    }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { color-scheme: light; }
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body class="min-h-full bg-gradient-to-b from-indigo-50 to-white text-gray-800">
-  <!-- Topbar -->
-  <header class="bg-white/80 backdrop-blur border-b border-indigo-100">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="{% url 'home' %}" class="flex items-center gap-2">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white text-lg font-bold shadow-sm">TM</span>
+
+<body class="min-h-screen bg-gradient-to-b from-indigo-50 to-white text-gray-800 flex flex-col">
+  <!-- 🔹 Navbar -->
+  <header class="bg-white/80 backdrop-blur border-b border-indigo-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <!-- Logo -->
+      <a href="{% url 'home' %}" class="flex items-center gap-3 group">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white text-lg font-bold shadow-sm transition-transform group-hover:scale-105">TM</span>
         <div>
-          <p class="text-lg font-bold leading-tight">Fruteria</p>
-          <p class="text-xs text-gray-500 -mt-1">las mejores frutas del mercado</p>
+          <p class="text-lg font-bold leading-tight group-hover:text-indigo-600 transition-colors">Frutería</p>
+          <p class="text-xs text-gray-500 -mt-1">Las mejores frutas del mercado</p>
         </div>
       </a>
 
-      <nav class="flex items-center gap-2">
+      <!-- Navegación principal -->
+      <nav class="flex flex-wrap justify-center gap-2">
         <a href="{% url 'producto_lista' %}"
-           class="px-3 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition">
-          listado productos
+           class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition">
+          Productos
         </a>
         <a href="{% url 'cliente_lista' %}"
-           class="px-3 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition">
-          listado clientes
+           class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition">
+          Clientes
         </a>
         <a href="{% url 'detalleventa_lista' %}"
-           class="px-3 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition">
-          listado ventas
+           class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition">
+          Ventas
         </a>
-        <!--<a href="/admin/"
-           class="px-3 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-100 transition">
-          Admin
-        </a>-->
       </nav>
+
+      <!-- 🔹 Botones de sesión -->
+      <div class="flex flex-wrap justify-end items-center gap-3">
+        {% if user.is_authenticated %}
+          <span class="px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg shadow-sm">
+            👋 {{ user.username }}
+          </span>
+
+          <form method="post" action="{% url 'logout' %}" class="inline">
+            {% csrf_token %}
+            <button type="submit"
+                    class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-red-500 hover:bg-red-600 shadow-sm transition">
+              Cerrar sesión
+            </button>
+          </form>
+        {% else %}
+          <a href="{% url 'register' %}"
+             class="px-4 py-2 rounded-lg text-sm font-semibold text-indigo-600 border border-indigo-600 hover:bg-indigo-50 transition">
+            Registrarse
+          </a>
+          <a href="{% url 'login' %}"
+             class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition">
+            Iniciar sesión
+          </a>
+        {% endif %}
+      </div>
     </div>
   </header>
 
-  <!-- Mensajes (Django messages) -->
-  <div class="max-w-6xl mx-auto px-4 mt-4 space-y-2">
+  <!-- 🔹 Mensajes de Django -->
+  <div class="max-w-6xl mx-auto px-6 mt-4 space-y-2">
     {% if messages %}
       {% for message in messages %}
         <div class="rounded-xl border p-3 text-sm
@@ -64,16 +96,14 @@
     {% endif %}
   </div>
 
-  <!-- Contenido -->
-  <main class="max-w-6xl mx-auto px-4 py-6">
+  <!-- 🔹 Contenido dinámico -->
+  <main class="flex-1 max-w-6xl mx-auto px-6 py-8">
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t bg-white/60 backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-gray-500">
-      Hecho con ❤️ para clase — Django MVC + Tailwind.
-    </div>
+  <!-- 🔹 Footer -->
+  <footer class="border-t bg-white/70 backdrop-blur text-center py-4 text-sm text-gray-500">
+    Hecho con ❤️ para clase — Django MVC + Tailwind.
   </footer>
 
   {% block extra_js %}{% endblock %}

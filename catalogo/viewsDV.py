@@ -1,7 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages 
 from .models import DetalleVenta
 from .forms import DetalleVentaForm
+
+@login_required
 
 def detalleventa_lista(request):
     detalles = DetalleVenta.objects.order_by('-created_at')

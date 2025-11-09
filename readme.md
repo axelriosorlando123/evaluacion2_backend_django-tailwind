@@ -55,7 +55,10 @@ FUNCIONALIDADES
 Listar y crear productos,clientes,ventas 
 CRUD completo
 graficos de productos mas vendidos y clientes con mas ventas  
-Mensajes de éxito/error  
+Mensajes de éxito/error
+Sistema de registro e inicio de sesión para clientes.
+Solo los usuarios autenticados pueden acceder a las funcionalidades que no son el.
+Logout
 Panel admin  
 Base de datos SQLite
 
