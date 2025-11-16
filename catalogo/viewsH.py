@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.db.models import Sum, Count
 from .models import Producto
 from .models import DetalleVenta  
 
+@login_required
 def home(request):
     # Productos más vendidos
     productos_vendidos = (
